@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Movie</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ movie.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ movie.title }}</td>
+            </tr>
+            <tr>
+                <th>Titleoriginal</th>
+                <td>{{ movie.titleOriginal }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ movie.image }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ movie.description }}</td>
+            </tr>
+            <tr>
+                <th>Premierdate</th>
+                <td>{{ movie.premierDate }}</td>
+            </tr>
+            <tr>
+                <th>Adddate</th>
+                <td>{% if movie.addDate %}{{ movie.addDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Viewed</th>
+                <td>{{ movie.viewed }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ movie.status }}</td>
+            </tr>
+            <tr>
+                <th>Rating</th>
+                <td>{{ movie.rating }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('movie_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('movie_edit', { 'id': movie.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

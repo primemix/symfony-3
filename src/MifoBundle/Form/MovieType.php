@@ -1,0 +1,45 @@
+<?php
+
+namespace MifoBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class MovieType extends AbstractType
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('title')
+            ->add('titleOriginal')
+            ->add('image')
+            ->add('description')
+            ->add('premierDate')
+            ->add('addDate')
+            ->add('viewed')
+            ->add('status')
+            ->add('rating');
+    }/**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'MifoBundle\Entity\Movie'
+        ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'mifobundle_movie';
+    }
+
+
+}

@@ -1,0 +1,19 @@
+mifo_movie:
+    resource: "@MifoBundle/Resources/config/routing/movie.yml"
+    prefix:   /movie
+
+mifo_homepage:
+    path:     /
+    defaults: { _controller: MifoBundle:Default:index }
+
+admin:
+    path: /admin
+    defaults: { _controller: MifoBundle:Admin:admin }
+
+admin_movie:
+    path: /admin/movie
+    defaults: { _controller: MifoBundle:Admin:movie }
+
+admin_movie_new:
+    path: /admin/movie/new
+    defaults: { _controller: MifoBundle:Admin:new}

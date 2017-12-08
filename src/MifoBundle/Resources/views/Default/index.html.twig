@@ -1,5 +1,34 @@
 {% extends "@Mifo/layout.html.twig" %}
-
 {% block content %}
-Hello World!
+    <div style="display: block; margin-left: auto;margin-right: auto; width: 800px">
+    <h1>Home Page</h1>
+    <div><a href="{{ path("admin")}}">Admin</a></div>
+    <table style="width: 600px; text-align: left">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Title Original</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Premier date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for movie in pagination %}
+            <tr>
+                <td><a href="{{ path('movie_show', { 'id': movie.id }) }}">{{ movie.id }}</a></td>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.titleOriginal }}</td>
+                <td>{{ movie.image }}</td>
+                <td>{{ movie.description | slice(0,100) }}</td>
+                <td>{{ movie.premierDate }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+    </div>
 {% endblock %}

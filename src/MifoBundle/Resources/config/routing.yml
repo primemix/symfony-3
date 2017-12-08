@@ -12,8 +12,14 @@ admin:
 
 admin_movie:
     path: /admin/movie
-    defaults: { _controller: MifoBundle:Admin:movie }
+    defaults: { _controller: "MifoBundle:Admin:movie" }
 
 admin_movie_new:
     path: /admin/movie/new
-    defaults: { _controller: MifoBundle:Admin:new}
+    defaults: { _controller: "MifoBundle:Admin:new" }
+    methods:  [GET, POST]
+
+admin_movie_show:
+    path:     /admin/show/{id}
+    defaults: { _controller: "MifoBundle:Admin:show" }
+    methods:  GET

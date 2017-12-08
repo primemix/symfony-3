@@ -3,6 +3,7 @@
 namespace MifoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Movie
@@ -22,6 +23,7 @@ class Movie
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -57,6 +59,8 @@ class Movie
     private $premierDate;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Type("\DateTime")
      * @var \DateTime
      *
      * @ORM\Column(name="add_date", type="datetime")

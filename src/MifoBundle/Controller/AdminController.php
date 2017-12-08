@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function adminAction()
     {
         return $this->render('@Mifo/admin/index.html.twig');
@@ -17,14 +20,19 @@ class AdminController extends Controller
      * Lists all movie entities.
      *
      */
-    public function movieAction()
+    public function movieAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
         $movies = $em->getRepository('MifoBundle:Movie')->findAll();
 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $movies,
+            $request->query->getInt('page', 1)/*page number*/,
+            3/*limit per page*/
+        );
         return $this->render('@Mifo/admin/movie/index.html.twig', array(
-            'movies' => $movies,
+            'pagination' => $pagination
         ));
     }
 
